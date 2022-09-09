@@ -1,4 +1,4 @@
-package me.cell.wewant.core.tools;
+package me.cell.wewant.tools;
 
 
 import me.cell.wewant.core.Boot;

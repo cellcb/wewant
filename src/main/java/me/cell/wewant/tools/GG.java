@@ -1,4 +1,4 @@
-package me.cell.wewant.core.tools;
+package me.cell.wewant.tools;
 
 import org.openqa.selenium.Proxy;
 import org.openqa.selenium.WebDriver;

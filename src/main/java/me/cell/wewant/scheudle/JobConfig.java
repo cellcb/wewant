@@ -1,7 +1,7 @@
 package me.cell.wewant.scheudle;
 
 import me.cell.wewant.core.Main;
-import me.cell.wewant.core.tools.YDY;
+import me.cell.wewant.tools.YDY;
 import org.jobrunr.scheduling.JobScheduler;
 import org.jobrunr.scheduling.cron.Cron;
 import org.springframework.beans.factory.annotation.Autowired;

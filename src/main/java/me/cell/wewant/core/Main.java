@@ -5,7 +5,7 @@ package me.cell.wewant.core;
 import me.cell.wewant.core.index.Dei;
 import me.cell.wewant.core.index.ES;
 import me.cell.wewant.core.mail.Email;
-import me.cell.wewant.core.tools.YDY;
+import me.cell.wewant.tools.YDY;
 import org.springframework.stereotype.Component;
 
 import javax.mail.MessagingException;
@@ -37,7 +37,7 @@ public class Main {
 
         ItemRegistry items = new ItemRegistry();
         items.init();
-//        ES es = new ES("172.16.205.243", 9200);
+        ES es = new ES("172.16.205.243", 9200);
 
 
         for (Item item : items) {
@@ -54,7 +54,7 @@ public class Main {
                     SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX", Locale.CHINA);
                     Date catchTime = new Date(System.currentTimeMillis());
                     Dei dei = Dei.builder().url("").catchTime(sdf.format(catchTime)).name(item.getName()).price(result.get().getPrice()).build();
-//                    es.index(dei);
+                    es.index(dei);
 
                     if (dei.getPrice().intValue() <= item.getExpect()) {
                         try {
