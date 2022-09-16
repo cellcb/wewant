@@ -27,7 +27,8 @@ public class NameCrawler {
 //            String dirName = "/Volumes/Disk/share";
 //            String dirName = "/Volumes/share/lh/";
 //            String dirName = "/Volumes/share/download/";
-            String dirName = "/Volumes/Elements6t/.a/";
+//            String dirName = "/Volumes/Elements6t/.a/";
+            String dirName = "/Volumes/cell-rog/A";
 
             Files.list(new File(dirName).toPath()).limit(500).forEach(path -> {
 //                        if (!path.toFile().isDirectory()) {

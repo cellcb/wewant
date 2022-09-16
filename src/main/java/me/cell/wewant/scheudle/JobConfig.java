@@ -20,7 +20,7 @@ public class JobConfig {
     public void handleContextRefreshEvent(ApplicationReadyEvent applicationReadyEvent) {
 //        jobScheduler.scheduleRecurrently("*/1 * * * *", () -> Main.wewant());
         jobScheduler.scheduleRecurrently(" 0 */8 * * *", () -> Main.wewant());
-        jobScheduler.scheduleRecurrently(Cron.daily(7), () -> YDY.checkin());
+        jobScheduler.scheduleRecurrently(Cron.daily(7), () -> YDY.checkinWithDelay());
     }
 
 }

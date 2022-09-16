@@ -14,6 +14,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 import java.util.Optional;
+import java.util.stream.Stream;
 
 @Component
 public class Main {
@@ -24,7 +25,7 @@ public class Main {
     public static void main(String[] args) {
         if (args.length > 0 && args[0].equals("ydy")) {
             System.out.println("check in");
-            YDY.checkin();
+            YDY.checkin(0);
         }else {
             System.out.println("wewant");
             wewant();
@@ -38,6 +39,13 @@ public class Main {
         ItemRegistry items = new ItemRegistry();
         items.init();
         ES es = new ES("172.16.205.243", 9200);
+
+//        Stream<Optional<Crawler>> crawlers = items.stream().map(item -> siteRegistry.getCrawler(item.getUrl())).filter(Optional::isPresent);
+
+//        Stream<Item> singleTypeItems = items.stream().filter(item -> item.getType().equals("single"));
+//        Stream<Item> listTypeItems = items.stream().filter(item -> item.getType().equals("list"));
+
+//        singleTypeItems.map(item -> siteRegistry.getCrawler(item.getUrl())).filter(Optional::isPresent)
 
 
         for (Item item : items) {
