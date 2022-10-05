@@ -12,11 +12,11 @@ import org.openqa.selenium.*;
 import org.springframework.stereotype.Component;
 
 import java.io.IOException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.time.Duration;
 import java.time.temporal.ChronoUnit;
-import java.util.Optional;
-import java.util.Random;
-import java.util.Set;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Slf4j
@@ -24,6 +24,29 @@ import java.util.stream.Collectors;
 public class YDY {
     public static void main(String[] args) throws Exception {
         checkin(0);
+
+//        isLastDayOfMonth();
+    }
+
+    private static boolean isLastDayOfMonth() {
+        Date today = new Date();
+
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(today);
+
+        calendar.add(Calendar.MONTH, 1);
+        calendar.set(Calendar.DAY_OF_MONTH, 1);
+        calendar.add(Calendar.DATE, -1);
+
+        Date lastDayOfMonth = calendar.getTime();
+
+        DateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        String current = sdf.format(today);
+        System.out.println("Today            : " + current);
+        String last = sdf.format(lastDayOfMonth);
+        System.out.println("Last Day of Month: " + last);
+        return current.equals(last);
+
     }
 
     public static void checkinWithDelay() {
@@ -90,6 +113,10 @@ public class YDY {
             }
             log.info("after checkin times:{}", afterCheckIn.get());
 
+            if (isLastDayOfMonth()) {
+                exchange(afterCheckIn.get(), driver);
+            }
+
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -102,6 +129,7 @@ public class YDY {
     }
 
     private static Optional<Integer> doCheckIn(WebDriver driver) throws IOException {
+
         ((JavascriptExecutor) driver).executeScript("checkIn();");
         Set<Cookie> cookies = driver.manage().getCookies();
         String cookieStr = cookies.stream().map(c -> c.getName() + ":" + c.getValue()).collect(Collectors.joining(";"));
@@ -113,4 +141,20 @@ public class YDY {
         checkinresp.close();
         return checkinTime(driver.getPageSource());
     }
+
+    private static void exchange(int checkinTime, WebDriver driver) throws IOException {
+        log.info("exchange:{}", checkinTime);
+        OkHttpClient client = new OkHttpClient().newBuilder().followRedirects(false).build();
+        Set<Cookie> cookies = driver.manage().getCookies();
+        String cookieStr = cookies.stream().map(c -> c.getName() + ":" + c.getValue()).collect(Collectors.joining(";"));
+        RequestBody exchangeForm = new FormBody.Builder().add("want", String.valueOf(checkinTime)).build();
+        Request exchange = new Request.Builder().url("https://ydy1.com/core/exchange").addHeader("cookie", cookieStr).post(exchangeForm).build();
+        Response response = client.newCall(exchange).execute();
+        response.close();
+    }
+
+
+//    https://ydy1.com/core/exchange
+//form data
+//    want
 }
