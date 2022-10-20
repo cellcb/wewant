@@ -11,24 +11,32 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.Date;
 
 public class NameCrawler {
+
+
+    public void ssss(){
+        
+    }
+
 
     static Boolean isDir(Path path) {
         if (path == null || !Files.exists(path)) return false;
         else return Files.isDirectory(path);
     }
 
+
     public static void main(String[] args) {
 
 
         try {
-//            String dirName = "/Users/cell/Downloads/.a/";
+            String dirName = "/Users/cell/Downloads/.a/";
 //            String dirName = "/Volumes/Disk/share";
 //            String dirName = "/Volumes/share/lh/";
 //            String dirName = "/Volumes/share/download/";
 //            String dirName = "/Volumes/Elements6t/.a/";
-            String dirName = "/Volumes/cell-rog/A";
+//            String dirName = "/Volumes/cell-rog/a";
 
             Files.list(new File(dirName).toPath()).limit(500).forEach(path -> {
 //                        if (!path.toFile().isDirectory()) {
@@ -42,6 +50,7 @@ public class NameCrawler {
                     System.out.println("full path:" + path);
                     System.out.println("query name:" + videoQueryName);
                     try {
+
                         String name = getname(videoQueryName);
                         if (name != null) {
                             String oldname = path.toString();
@@ -62,6 +71,7 @@ public class NameCrawler {
 
                             File file2 = new File(finalname);
                             boolean success = file.renameTo(file2);
+
                         }
 
                         Thread.sleep((long) (Math.random() * 15000));

@@ -5,12 +5,13 @@ url: https://www.amazon.cn/s?k=western+digital+elements+10tb&sprefix=western+dig
 expect: 1000
 proxy: false
 ---
-#id: 2
+id: 2
 name: canon rf35 f1.8
 type: single
 url: https://www.bhphotovideo.com/c/product/1433714-REG/canon_rf_35mm_f_1_8_is.html
 expect: 479
 proxy: false
+notify: false
 ---
 name: 东芝(Kioxia) 256GB PCIe NVMe 2230 SSD (KBG40ZNS256G) (OEM)
 type: single
@@ -28,4 +29,16 @@ name: Kioxia SSD 512GB M.2 2230
 type: single
 url: https://www.amazon.cn/dp/B0B9NTRGGF/ref=sr_1_3?__mk_zh_CN=%E4%BA%9A%E9%A9%AC%E9%80%8A%E7%BD%91%E7%AB%99&crid=11EY1VV0ISW84&keywords=nvme+2230+kioxia&qid=1664538998&sprefix=nvme+2230+kioxia%2Caps%2C114&sr=8-3
 expect: 1000
+proxy: false
+---
+name: Canon ET-89 Lens Hood
+type: single
+url: https://www.bhphotovideo.com/c/product/1477650-REG/canon_3448c001_et_89_lens_hood.html
+expect: 38
+proxy: false
+---
+name: lacoste women pants XF7077-51
+type: single
+url: https://www.lacoste.com/us/lacoste/women/clothing/pants/women%E2%80%99s-blended-cotton-jogging-pants/XF7077-51.html?color=HBP
+expect: 100
 proxy: false

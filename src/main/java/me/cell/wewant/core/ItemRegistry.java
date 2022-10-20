@@ -13,6 +13,7 @@ public class ItemRegistry extends ArrayList<Item> {
     public static void main(String[] args) {
         ItemRegistry itemRegistry = new ItemRegistry();
         itemRegistry.loadItem();
+        System.out.println(itemRegistry);
 //        itemRegistry.init();
 
 //        PrintWriter writer = null;

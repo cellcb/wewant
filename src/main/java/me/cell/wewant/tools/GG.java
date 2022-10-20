@@ -24,16 +24,17 @@ public class GG {
 //        proxy.setProxyType(Proxy.ProxyType.DIRECT);
         chromeOptions.addArguments("start-maximized");
 
-        chromeOptions.setCapability("proxy", proxy);
+//        chromeOptions.setCapability("proxy", proxy);
 
         WebDriver driver = new ChromeDriver(chromeOptions);
         try {
 
             driver.manage().window().maximize();
-            driver.get("https://www.google.com");
+            driver.get("https://www.lacoste.com/us/lacoste/women/clothing/pants/women%E2%80%99s-blended-cotton-jogging-pants/XF7077-51.html?color=HBP");
 //        driver.get("https://www.amazon.cn/ref=z_cn?tag=zcn0e-23");
             driver.manage().timeouts().implicitlyWait(Duration.of(5, ChronoUnit.SECONDS));
             String l = driver.getPageSource();
+            System.out.println(l);
             Thread.sleep(2000);
             driver.navigate().refresh();
 //        System.out.println(stockStatus.getText());

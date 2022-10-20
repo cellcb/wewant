@@ -9,6 +9,9 @@ import java.security.GeneralSecurityException;
 import java.util.Properties;
 
 public class Email {
+
+
+
     public static void main(String[] args) {
         try {
             send("test","abc");

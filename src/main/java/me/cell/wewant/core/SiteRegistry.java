@@ -4,6 +4,7 @@ package me.cell.wewant.core;
 
 import me.cell.wewant.core.stie.Bhphotovideo;
 import me.cell.wewant.core.stie.amazon.AmazonCN;
+import me.cell.wewant.core.stie.lacoste.LacosteUS;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -27,6 +28,7 @@ public class SiteRegistry {
     public void init() {
         registered.put("https://www.amazon.cn/", new AmazonCN());
         registered.put("https://www.bhphotovideo.com/", new Bhphotovideo());
+        registered.put("https://www.lacoste.com/us/", new LacosteUS());
     }
 
     public Optional<Crawler> getCrawler(String url) {

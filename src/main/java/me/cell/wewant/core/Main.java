@@ -14,10 +14,10 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 import java.util.Optional;
-import java.util.stream.Stream;
 
 @Component
 public class Main {
+
 
 
     // Conversion
@@ -66,7 +66,9 @@ public class Main {
 
                     if (dei.getPrice().intValue() <= item.getExpect()) {
                         try {
-                            Email.send(dei.getName() + " : " + dei.getPrice(), dei.getUrl());
+                            if(item.getNotify()){
+                                Email.send(dei.getName() + " : " + dei.getPrice(), "商品链接:"+ dei.getUrl());
+                            }
                         } catch (MessagingException | GeneralSecurityException e) {
                             System.out.println(e);
                         }

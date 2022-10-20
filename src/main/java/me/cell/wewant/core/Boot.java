@@ -6,6 +6,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 
 public class Boot {
+    
     @NotNull
     public static WebDriver getWebDriver() {
         String chromeDriverPath = System.getProperty("WEBDRIVER_CHROME_DRIVER_PATH", "/opt/homebrew/bin/chromedriver");
