@@ -117,15 +117,12 @@ public class YDY {
                 exchange(afterCheckIn.get(), driver);
             }
 
-
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
             driver.close();
         }
-//        driver.findElement(By.id("checkInBtn")).click();
-//        Thread.sleep(1000);
-//        driver.quit();
+
     }
 
     private static Optional<Integer> doCheckIn(WebDriver driver) throws IOException {
@@ -142,19 +139,20 @@ public class YDY {
         return checkinTime(driver.getPageSource());
     }
 
-    private static void exchange(int checkinTime, WebDriver driver) throws IOException {
+    private static void exchange(int checkinTime, WebDriver driver) throws Exception {
         log.info("exchange:{}", checkinTime);
-        OkHttpClient client = new OkHttpClient().newBuilder().followRedirects(false).build();
-        Set<Cookie> cookies = driver.manage().getCookies();
-        String cookieStr = cookies.stream().map(c -> c.getName() + ":" + c.getValue()).collect(Collectors.joining(";"));
-        RequestBody exchangeForm = new FormBody.Builder().add("want", String.valueOf(checkinTime)).build();
-        Request exchange = new Request.Builder().url("https://ydy1.com/core/exchange").addHeader("cookie", cookieStr).post(exchangeForm).build();
-        Response response = client.newCall(exchange).execute();
-        response.close();
+
+        driver.get("https://ydy1.com/exchange");
+        Thread.sleep(5000);
+        driver.navigate().refresh();
+        Thread.sleep(5000);
+        driver.findElement(By.id("want_checkin")).sendKeys(String.valueOf(checkinTime));
+        Thread.sleep(1000);
+        WebElement exchangeButton = driver.findElement(By
+                .id("calculateBtn"));
+        // 点击登录
+        exchangeButton.click();
+
     }
 
-
-//    https://ydy1.com/core/exchange
-//form data
-//    want
 }
