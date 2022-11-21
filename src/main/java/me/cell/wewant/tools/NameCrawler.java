@@ -11,14 +11,8 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.util.Date;
 
 public class NameCrawler {
-
-
-    public void ssss(){
-        
-    }
 
 
     static Boolean isDir(Path path) {
@@ -26,16 +20,15 @@ public class NameCrawler {
         else return Files.isDirectory(path);
     }
 
-
     public static void main(String[] args) {
 
 
         try {
-            String dirName = "/Users/cell/Downloads/.a/";
+//            String dirName = "/Users/cell/Downloads/.a/";
 //            String dirName = "/Volumes/Disk/share";
 //            String dirName = "/Volumes/share/lh/";
 //            String dirName = "/Volumes/share/download/";
-//            String dirName = "/Volumes/Elements6t/.a/";
+            String dirName = "/Volumes/Elements6t/.a/";
 //            String dirName = "/Volumes/cell-rog/a";
 
             Files.list(new File(dirName).toPath()).limit(500).forEach(path -> {
@@ -101,6 +94,7 @@ public class NameCrawler {
 
             if (homeresp.code() == 200) {
                 String string = homeresp.body().string();
+                homeresp.body().close();
                 homeresp.close();
                 return getYanyuan(string);
             } else {
@@ -169,6 +163,10 @@ public class NameCrawler {
     private static String testhtml() {
 
         return "";
+    }
+
+    public void ssss() {
+
     }
 
 

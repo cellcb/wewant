@@ -15,11 +15,14 @@ public class JobConfig {
     @Autowired
     private JobScheduler jobScheduler;
 
+    @Autowired
+    private Main main;
     @Order(2)
     @EventListener
     public void handleContextRefreshEvent(ApplicationReadyEvent applicationReadyEvent) {
+
 //        jobScheduler.scheduleRecurrently("*/1 * * * *", () -> Main.wewant());
-        jobScheduler.scheduleRecurrently(" 0 */8 * * *", () -> Main.wewant());
+        jobScheduler.scheduleRecurrently(" 0 */8 * * *", () -> main.wewant());
         jobScheduler.scheduleRecurrently(Cron.daily(7), () -> YDY.checkinWithDelay());
     }
 

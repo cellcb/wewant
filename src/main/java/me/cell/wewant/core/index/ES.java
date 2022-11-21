@@ -8,6 +8,7 @@ import co.elastic.clients.transport.rest_client.RestClientTransport;
 import lombok.SneakyThrows;
 import org.apache.http.HttpHost;
 import org.elasticsearch.client.RestClient;
+import org.springframework.stereotype.Component;
 
 public class ES {
 

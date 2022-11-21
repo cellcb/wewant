@@ -5,7 +5,7 @@ url: https://www.amazon.cn/s?k=western+digital+elements+10tb&sprefix=western+dig
 expect: 1000
 proxy: false
 ---
-id: 2
+#id: 2
 name: canon rf35 f1.8
 type: single
 url: https://www.bhphotovideo.com/c/product/1433714-REG/canon_rf_35mm_f_1_8_is.html
@@ -42,3 +42,4 @@ type: single
 url: https://www.lacoste.com/us/lacoste/women/clothing/pants/women%E2%80%99s-blended-cotton-jogging-pants/XF7077-51.html?color=HBP
 expect: 100
 proxy: false
+notify: false
