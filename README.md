@@ -1,5 +1,2 @@
-# wewant
-
-
-
--DITEM_PATH=/Users/cell/Downloads/wewant/src/main/resources/item.yaml
+# Free AI at api.airforce
+https://discord.gg/AJDsM7jtbq
